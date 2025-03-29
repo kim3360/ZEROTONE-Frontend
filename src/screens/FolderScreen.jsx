@@ -1,6 +1,7 @@
 import { Bold } from 'lucide-react-native';
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 export default function FoldScreen() {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -14,6 +15,7 @@ export default function FoldScreen() {
 
 
   return (
+     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.container}>
       {/* 상단 제목 & 날짜 */}
       <View style={styles.header}>
@@ -49,6 +51,7 @@ export default function FoldScreen() {
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
