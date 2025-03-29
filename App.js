@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
-import Tab from './src/navigation/Tab'; 
+import CustomOnboarding from './src/screens/CustomOnboarding'; // 경로 맞게 수정
+import Tab from './src/navigation/Tab';
 
 export default function App() {
+  const [firstLaunch, setFirstLaunch] = useState(null);
+
+  useEffect(() => {
+
+    AsyncStorage.removeItem('alreadyLaunched');
+    
+    AsyncStorage.getItem('alreadyLaunched').then((value) => {
+      if (value === null) {
+        AsyncStorage.setItem('alreadyLaunched', 'true');
+        setFirstLaunch(true);
+      } else {
+        setFirstLaunch(false);
+      }
+    });
+  }, []);
+
+  if (firstLaunch === null) return null;
+
   return (
     <NavigationContainer>
-      <Tab/>
+      {firstLaunch ? (
+        <CustomOnboarding onFinish={() => setFirstLaunch(false)} />
+      ) : (
+        <Tab />
+      )}
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
