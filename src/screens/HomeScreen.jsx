@@ -86,6 +86,15 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
+
+        <View>
+        <Image source={require('../assets/Logo.png')}
+            style={{width : 113, 
+                    height : 54, 
+                    marginRight : 8}}
+        />
+        
+        </View>
         <Text style={styles.greeting}>👋 안녕하세요! 오늘도 자료 정리하러 오셨군요.</Text>
         <View style={styles.badgeRow}>
           <Text style={[styles.badge, { backgroundColor: "#3B82F6" }]}>📄 오늘 요약: {summaries.length}개</Text>
@@ -132,46 +141,48 @@ const HomeScreen = () => {
           return (
             <View key={item.id} style={{ marginBottom: 150 }}>
               <Animated.View style={[styles.card, getFrontStyle(item.id), { zIndex: flippedCardId === item.id ? 0 : 1 }]}>
+                <View style={styles.cardHeader}>
+                  {uploadedImage ? (
+                    <Image source={{ uri: uploadedImage }} style={styles.thumbnail} />
+                  ) : (
+                    <View style={styles.placeholderBox} />
+                  )}
+                  <View style={{ flex: 1 }}>
+                    <Text style={styles.cardTitle}>{item.title}</Text>
+                    <Text style={styles.cardSummary}>
+                      <Text style={styles.boldText}>요약: </Text>
+                      {item.summary}
+                    </Text>
+                    <Text style={styles.viewAll}>전체보기</Text>
+                  </View>
+                  <Star size={16} color="#FACC15" style={styles.starIcon} />
+                </View>
+
                 <TouchableOpacity
                   activeOpacity={0.9}
                   onPress={() => flipToBack(item.id)}
                 >
-                  <View style={styles.cardHeader}>
-                    {uploadedImage ? (
-                      <Image source={{ uri: uploadedImage }} style={styles.thumbnail} />
-                    ) : (
-                      <View style={styles.placeholderBox} />
-                    )}
-                    <View style={{ flex: 1 }}>
-                      <Text style={styles.cardTitle}>{item.title}</Text>
-                      <Text style={styles.cardSummary}>
-                        <Text style={styles.boldText}>요약: </Text>
-                        {item.summary}
-                      </Text>
-                      <Text style={styles.viewAll}>전체보기</Text>
-                    </View>
-                    <Star size={16} color="#FACC15" style={styles.starIcon} />
-                  </View>
                   <Text style={styles.cardHint}>카드 클릭 시 뒷면</Text>
                 </TouchableOpacity>
               </Animated.View>
 
               <Animated.View style={[styles.card, styles.cardBack, getBackStyle(item.id), { zIndex: flippedCardId === item.id ? 1 : 0 }]}>
+
+                <View style={styles.cardBackHeader}>
+                  <Text style={styles.memoTitle}>✏️ 메모를 작성해보세요</Text>
+                  <TouchableOpacity style={styles.saveButton}>
+                    <Text style={styles.saveButtonText}>저장</Text>
+                  </TouchableOpacity>
+                </View>
+                <TextInput
+                  style={styles.memoInput}
+                  placeholder="메모 입력..."
+                  multiline
+                />
                 <TouchableOpacity
                   activeOpacity={1}
                   onPress={() => flipToFront(item.id)}
                 >
-                  <View style={styles.cardBackHeader}>
-                    <Text style={styles.memoTitle}>✏️ 메모를 작성해보세요</Text>
-                    <TouchableOpacity style={styles.saveButton}>
-                      <Text style={styles.saveButtonText}>저장</Text>
-                    </TouchableOpacity>
-                  </View>
-                  <TextInput
-                    style={styles.memoInput}
-                    placeholder="메모 입력..."
-                    multiline
-                  />
                   <Text style={styles.cardHint}>카드 클릭 시 앞면</Text>
                 </TouchableOpacity>
               </Animated.View>
@@ -180,12 +191,7 @@ const HomeScreen = () => {
         })}
       </ScrollView>
 
-      <View style={styles.tabBar}>
-        <TouchableOpacity style={styles.tabButton}><Home size={20} color="#3B82F6" /><Text style={styles.tabText}>홈</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabButton}><Search size={20} color="#6B7280" /><Text style={styles.tabText}>검색</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabButton}><Folder size={20} color="#6B7280" /><Text style={styles.tabText}>폴더</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabButton}><Settings size={20} color="#6B7280" /><Text style={styles.tabText}>설정</Text></TouchableOpacity>
-      </View>
+      
     </View>
   );
 };
@@ -218,7 +224,7 @@ const styles = StyleSheet.create({
   cardTitle: { fontSize: 14, fontWeight: 'bold', color: '#111827' },
   cardSummary: { fontSize: 13, color: '#4B5563', flexWrap: 'wrap', },
   boldText: { fontWeight: 'bold', color: '#111827', },
-  viewAll: { fontSize: 12, color: '#3B82F6', marginTop: 4 },
+  viewAll: { fontSize: 12, color: '#3B82F6', marginTop: 4, alignItems: 'center', },
   cardHint: { fontSize: 10, color: '#9CA3AF', textAlign: 'right', marginTop: 6 },
   starIcon: { position: 'absolute', top: 8, right: 8 },
   cardBackHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
@@ -226,9 +232,6 @@ const styles = StyleSheet.create({
   saveButton: { backgroundColor: '#3B82F6', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 6 },
   saveButtonText: { color: '#fff', fontSize: 12 },
   memoInput: { borderWidth: 1, borderColor: '#D1D5DB', borderRadius: 8, padding: 8, fontSize: 13, backgroundColor: '#fff', textAlignVertical: 'top', minHeight: 60 },
-  tabBar: { flexDirection: "row", justifyContent: "space-around", paddingVertical: 10, backgroundColor: "#fff", borderTopWidth: 1, borderTopColor: "#E5E7EB" },
-  tabButton: { alignItems: "center" },
-  tabText: { fontSize: 11, marginTop: 2, color: "#6B7280" },
 });
 
 export default HomeScreen;
