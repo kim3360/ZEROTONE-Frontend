@@ -33,7 +33,7 @@ const HomeScreen = () => {
 
     if (!result.canceled) {
       const uri = result.assets[0].uri;
-      setUploadedImages((prev) => ({ ...prev, [cardId]: uri }));
+      setUploadedImages(uri);
     }
   };
 
@@ -213,14 +213,11 @@ const HomeScreen = () => {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <Image
-                source={
-                  uploadedImages[selectedItem?.id]
-                    ? { uri: uploadedImages[selectedItem.id] }
-                    : require('../assets/Logo.png')
-                }
+                source={uploadedImages ? { uri: uploadedImages } : require('../assets/Logo.png')}
                 style={styles.modalImage}
                 resizeMode="cover"
               />
+
 
               <Text style={styles.modalTitle}>{selectedItem?.title}</Text>
               <Text style={styles.modalText}>{selectedItem?.summary}</Text>
@@ -303,14 +300,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#111827',
     marginBottom: 8,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   modalText: {
     fontSize: 14,
     color: '#4B5563',
     lineHeight: 20,
     marginBottom: 20,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   closeButton: {
     backgroundColor: '#3B82F6',

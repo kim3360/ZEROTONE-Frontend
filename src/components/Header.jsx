@@ -15,6 +15,4 @@ export const Header = () => {
 }
 
 const styles = StyleSheet.create({
-  greeting: { fontSize: 14, color: "#4B5563", marginBottom: 8 },
-  badge: { paddingHorizontal: 12, paddingVertical: 6, color: "#fff", borderRadius: 16, fontSize: 12 },
 });
