@@ -29,22 +29,45 @@ const HomeScreen = () => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       quality: 1,
+      base64: false,
     });
 
-    if (!result.canceled) {
+    console.log(result);
+
+    if (!result.canceled && result.assets && result.assets.length > 0) {
       const uri = result.assets[0].uri;
       setUploadedImages(uri);
+
+      const formData = new FormData();
+      formData.append('file', {
+        uri: uri,
+        name: 'upload.jpg',
+        type: 'image/jpeg',
+      });
+
+      try {
+        const response = await fetch('http://172.31.56.61/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        const data = await response.json();
+        console.log('서버 응답:', data);
+      } catch (error) {
+        console.error('업로드 실패:', error);
+        Alert.alert('업로드 실패', '서버에 이미지를 업로드하지 못했습니다.');
+      }
     }
   };
 
   const summaries = [
+
+
     {
       id: 1,
-      title: "회의 요약",
-      summary: "오늘 회의는 프로젝트 일정 조율과 업무 분담에 대한 내용이었습니다.",
-    },
-    {
-      id: 2,
       title: "스터디 자료",
       summary: "리액트 훅에 대해 정리한 스크린샷입니다. 주요 내용은 useEffect와 useState 사용법.",
     },
