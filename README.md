@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src=".src/assets/image.png" alt="Main" style="border-radius: 10px;"/>
+  <img src="./src/assets/image.png" alt="Main" style="border-radius: 10px;"/>
 </div>
 
 <br/>
@@ -57,8 +57,8 @@ OpenAI를 활용해 요약 + 카테고리 분류 + 폴더 저장까지 자동화
     <th align="center">폴더 페이지</th>
   </tr>
   <tr>
-    <td align="center"><img src=".src/assets/메인페이지.png" width="400"/></td>
-    <td align="center"><img src=".src/assets/폴더페이지.png" width="400"/></td>
+    <td align="center"><img src="./src/assets/메인페이지.png" width="400"/></td>
+    <td align="center"><img src="./src/assets/폴더페이지.png" width="400"/></td>
   </tr>
 </table>
 
@@ -68,8 +68,8 @@ OpenAI를 활용해 요약 + 카테고리 분류 + 폴더 저장까지 자동화
     <th align="center">Onboarding (주요 기능 설명)</th>
   </tr>
   <tr>
-    <td align="center"><img src=".src/assets/자동카테고리.png" width="400"/></td>
-    <td align="center"><img src=".src/assets/Onboarding.png" width="400"/></td>
+    <td align="center"><img src="./src/assets/자동카테고리.png" width="400"/></td>
+    <td align="center"><img src="./src/assets/Onboarding.png" width="400"/></td>
   </tr>
 </table>
  
