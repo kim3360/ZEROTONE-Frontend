@@ -77,12 +77,38 @@ OpenAI를 활용해 요약 + 카테고리 분류 + 폴더 저장까지 자동화
 
 ## 🧑‍💻 팀원 소개
 
-| **이름**      | **포지션**      |  **역할**                                      |
-|---------------|------------------------|------------------------------------------------------|
-| 김태우        | Project Manager        | 팀 총괄, React Native 기반 프론트엔드 개발, API 연동, UI·UX 구현&디자인            |
-| 송유선        | Product Planner        | 서비스 기획, 아이디어 구상, 기획서 작성, 화면 흐름도 설계, UI·UX 구현&디자인, 발표 자료 제작          |
-| 심연호        | Back-end Developer     | DB 설계, API 개발, AWS RDS 기반 DB 운영, OpenAI 연동                                  |
-| 정윤성        | Back-end Developer     | 서버 구현, API 연동, 로직 처리, EC2 서버 배포, CI/CD 환경 구성                         |
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>포지션</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>김태우</td>
+      <td>Project Manager</td>
+      <td>팀 총괄, React Native 기반 프론트엔드 개발, API 연동, UI·UX 구현&디자인</td>
+    </tr>
+    <tr>
+      <td>송유선</td>
+      <td>Product Planner</td>
+      <td>서비스 기획, 아이디어 구상, 기획서 작성, 화면 흐름도 설계, UI·UX 구현&디자인, 발표 자료 제작</td>
+    </tr>
+    <tr>
+      <td>심연호</td>
+      <td>Back-end Developer</td>
+      <td>DB 설계, API 개발, AWS RDS 기반 DB 운영, OpenAI 연동</td>
+    </tr>
+    <tr>
+      <td>정윤성</td>
+      <td>Back-end Developer</td>
+      <td>서버 구현, API 연동, 로직 처리, EC2 서버 배포, CI/CD 환경 구성</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ---
 
