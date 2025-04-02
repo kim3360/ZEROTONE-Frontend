@@ -77,12 +77,12 @@ OpenAI를 활용해 요약 + 카테고리 분류 + 폴더 저장까지 자동화
 
 ## 🧑‍💻 팀원 소개
 
-<table>
+<table style="width: 100%;">
   <thead>
     <tr>
-      <th>이름</th>
-      <th>포지션</th>
-      <th>역할</th>
+      <th style="width: 20%;">이름</th>
+      <th style="width: 20%;">포지션</th>
+      <th style="width: 60%;">역할</th>
     </tr>
   </thead>
   <tbody>
